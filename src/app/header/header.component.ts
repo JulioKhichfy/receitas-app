@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  collapsed = true;
   corDaVez: string = 'blue';
   constructor(){
     this.corDaVez = Math.random() > 0.5 ? 'blue' : 'red';
