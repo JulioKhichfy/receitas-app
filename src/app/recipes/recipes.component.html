@@ -6,7 +6,8 @@
     <div class="col-md-7">
         <app-recipe-detail *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipe-detail>
         <ng-template #infoText>
-            <p>Por favor selecione uma receita!</p>
+            <p appBasicHighlight>Por favor selecione uma receita!</p>
+            <p appBetterHighlight> usando appBetterHighlight</p>
         </ng-template>
     </div>
 </div>
