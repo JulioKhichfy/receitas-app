@@ -13,6 +13,7 @@ import { BasicHighlighDirective } from './directives/basic-highligh.directive';
 import { BetterHighlightDirective } from './directives/better-highlight.directive';
 import { MouseOverChangeColorDirective } from './directives/mouse-over-change-color.directive';
 import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse-over-change.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse
     BasicHighlighDirective,
     BetterHighlightDirective,
     MouseOverChangeColorDirective,
-    PassColorMouseOverChangeDirective
+    PassColorMouseOverChangeDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule
