@@ -7,7 +7,7 @@ import { Directive, ElementRef, HostBinding, HostListener, OnInit, Renderer2 } f
 
 export class MouseOverChangeColorDirective implements OnInit{
 
-  @HostBinding('style.backgroundColor') backgroundColor:string;
+  @HostBinding('style.backgroundColor') backgroundColor:string = 'yellow';
 
   constructor(private elRef: ElementRef ,private renderer: Renderer2) { }
   
