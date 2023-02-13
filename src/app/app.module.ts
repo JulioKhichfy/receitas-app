@@ -11,6 +11,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { BasicHighlighDirective } from './directives/basic-highligh.directive';
 import { BetterHighlightDirective } from './directives/better-highlight.directive';
+import { MouseOverChangeColorDirective } from './directives/mouse-over-change-color.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BetterHighlightDirective } from './directives/better-highlight.directiv
     ShoppingListComponent,
     ShoppingEditComponent,
     BasicHighlighDirective,
-    BetterHighlightDirective
+    BetterHighlightDirective,
+    MouseOverChangeColorDirective
   ],
   imports: [
     BrowserModule
