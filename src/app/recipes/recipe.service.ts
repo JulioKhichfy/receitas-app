@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { delay, Observable, of, shareReplay } from 'rxjs';
 import { Recipe } from './recipe.model';
 
 //@Injectable()
 export class RecipeService{
+
+  recipeSelected = new EventEmitter<Recipe>();
   
   recipes$: Observable<Recipe[]> = of([
     new Recipe('A Test Recipe 1', 'This is simply a test 1', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
