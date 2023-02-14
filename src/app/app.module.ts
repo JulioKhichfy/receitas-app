@@ -14,6 +14,7 @@ import { BetterHighlightDirective } from './directives/better-highlight.directiv
 import { MouseOverChangeColorDirective } from './directives/mouse-over-change-color.directive';
 import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse-over-change.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { RecipeService } from './recipes/recipe.service';
 
 @NgModule({
   declarations: [
