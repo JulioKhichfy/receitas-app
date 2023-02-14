@@ -15,6 +15,7 @@ import { MouseOverChangeColorDirective } from './directives/mouse-over-change-co
 import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse-over-change.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeService } from './recipes/recipe.service';
+import { ShoppingService } from './shopping-list/shopping.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { RecipeService } from './recipes/recipe.service';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [RecipeService, ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
