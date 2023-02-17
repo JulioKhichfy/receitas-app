@@ -7,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
 
-  @Output() featureSelected = new EventEmitter<string>();
+  
   collapsed = true;
   corDaVez: string = 'blue';
   constructor(){
@@ -18,7 +18,4 @@ export class HeaderComponent {
     return this.corDaVez;
   }
 
-  onSelect(feature:string){
-    this.featureSelected.emit(feature);
-  }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,7 @@ import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeService } from './recipes/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ShoppingService } from './shopping-list/shopping.service';
     DropdownDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [RecipeService, ShoppingService],
   bootstrap: [AppComponent]
