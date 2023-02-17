@@ -1,5 +1,4 @@
-import { outputAst } from '@angular/compiler';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -9,7 +9,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit{
-  //@Input() recipe :Recipe;
+  
   recipe :Recipe
   id:number;
   constructor(private recipeService: RecipeService,
