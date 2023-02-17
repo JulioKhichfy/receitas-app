@@ -17,6 +17,7 @@ import { PassColorMouseOverChangeDirective } from './directives/pass-color-mouse
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeService } from './recipes/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ShoppingService } from './shopping-list/shopping.service';
     BetterHighlightDirective,
     MouseOverChangeColorDirective,
     PassColorMouseOverChangeDirective,
-    DropdownDirective
+    DropdownDirective,
+    RecipeStartComponent
   ],
   imports: [
     BrowserModule,

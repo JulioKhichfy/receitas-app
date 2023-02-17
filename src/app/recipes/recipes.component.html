@@ -3,13 +3,14 @@
         <app-recipe-list></app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-detail *ngIf="(selectedRecipe$ | async) as recipe; else infoText" [recipe]="recipe"></app-recipe-detail>
+        <router-outlet></router-outlet>
+        <!--<app-recipe-detail *ngIf="(selectedRecipe$ | async) as recipe; else infoText" [recipe]="recipe"></app-recipe-detail>
         <ng-template #infoText>
             <p appBasicHighlight>Por favor selecione uma receita!</p>
             <p appBetterHighlight> usando appBetterHighlight</p>
             <p appMouseOverChangeColor > diretiva com event moseenter e mouseleave</p>
             <p appPassColorMouseOverChange [defaultColor]="'yellow'" [highlightColor]="'red'">diretiva com event moseenter e mouseleave passando cores</p>
-        </ng-template>
+        </ng-template>-->
     </div>
 </div>
   

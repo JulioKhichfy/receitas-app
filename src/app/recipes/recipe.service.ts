@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { delay, Observable, of, shareReplay } from 'rxjs';
+import { delay, filter, map, Observable, of, shareReplay } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 import { Recipe } from './recipe.model';
 import { ShoppingService } from '../shopping-list/shopping.service';
@@ -7,10 +7,9 @@ import { ShoppingService } from '../shopping-list/shopping.service';
 @Injectable({providedIn:'root'})
 export class RecipeService{
 
-  recipeSelected = new EventEmitter<Recipe>();
-  
-  recipes$: Observable<Recipe[]> = of([
-    new Recipe(
+  //recipeSelected = new EventEmitter<Recipe>();
+  recipes=[
+    new Recipe(1,
       'A Test Recipe 1', 
       'This is simply a test 1', 
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -19,7 +18,7 @@ export class RecipeService{
         new Ingredient('French Fries', 20),
       ]),
     
-      new Recipe(
+      new Recipe(2,
         'A Test Recipe 2', 
         'This is simply a test 2', 
         'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -27,7 +26,8 @@ export class RecipeService{
           new Ingredient('Buns', 2),
           new Ingredient('Meat', 1),
         ])
-  ]);  
+  ]
+  recipes$: Observable<Recipe[]> = of(this.recipes);  
   
   constructor(private slService: ShoppingService) {
     
@@ -37,6 +37,12 @@ export class RecipeService{
     return this.recipes$.pipe(
       shareReplay()
     );
+  }
+
+  getRecipe(id:number):Recipe{
+    
+    const recipe = this.recipes.find(recipe => recipe.id == id);
+    return recipe;
   }
 
   addIngredientsToShoppingList(ingredients:Ingredient[]){
