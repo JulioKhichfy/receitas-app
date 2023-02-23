@@ -1,0 +1,38 @@
+<div *ngIf="editMode; else create">
+    <p> modo edição </p>
+</div>
+<ng-template #create>
+    <p> modo criação </p>
+</ng-template>
+
+<!--<div class="row">
+  <div class="col-sm-5 form-group">
+    <label for="name">Name description</label>
+    <input *ngIf="editMode" type="text" id="name" class="form-control" [(ngModel)]="recipe.description">
+    <input *ngIf="!editMode" type="text" id="name" class="form-control">
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item"
+          *ngFor="let ingredient of recipe?.ingredients">
+           
+          <label for="ingredientName">ingredient name</label>
+          <input type="text" id="ingredientName" class="form-control" [(ngModel)]="ingredient.name">
+
+          <label for="ingredientAmount">ingredient amount</label>
+          <input type="text" id="ingredientAmount" class="form-control" [(ngModel)]="ingredient.amount">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-success" (click)="onAddItem()">Add</button>
+      <button class="btn btn-danger" type="button">Delete</button>
+      <button class="btn btn-primary" type="button">Save</button>
+    </div>
+  </div>
+-->
