@@ -29,4 +29,9 @@ export class ShoppingService {
     console.log("shopping service 2 " + this.ingredients.length)
     //this.loadIngredients.next(this.ingredients);
   }
+
+  deleteAll(){
+    this.ingredients = [];
+    this.loadIngredients.next(this.ingredients);
+  }
 }

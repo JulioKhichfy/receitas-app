@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Ingredient } from '../../shared/ingredient.model';
 import { ShoppingService } from '../shopping.service';
 
@@ -8,18 +9,30 @@ import { ShoppingService } from '../shopping.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit{
-
-  @ViewChild('nameInput',{static:false}) nameInputRef: ElementRef;
-  @ViewChild('amountInput',{static:false}) amountInputRef: ElementRef;
-
+ 
+  
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
+    
   }
 
-  onAddItem(){
-    const ingredient = new Ingredient(this.nameInputRef.nativeElement.value, +this.amountInputRef.nativeElement.value)
-    console.log("name = " + this.nameInputRef.nativeElement.value + " amount = " +this.amountInputRef.nativeElement.value)
+  onAddItem(form: NgForm){
+    const value = form.value;
+    const ingredient = new Ingredient(value.name, value.amount);
     this.shoppingService.addIngredient(ingredient);
   }
+
+  onClear(form: NgForm){
+    form.reset();
+  }
+
+  onDelete(){
+    this.shoppingService.deleteAll();
+  }
+} 
+
+function ViewChild(arg0: string, arg1: { static: boolean; }) {
+  throw new Error('Function not implemented.');
 }
+
