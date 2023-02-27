@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Ingredient } from '../../shared/ingredient.model';
 import { ShoppingService } from '../shopping.service';
 
@@ -8,31 +9,54 @@ import { ShoppingService } from '../shopping.service';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit{
- 
-  
-  constructor(private shoppingService: ShoppingService) { }
+export class ShoppingEditComponent implements OnInit, OnDestroy{
+  @ViewChild('f',{static: false}) slForm:NgForm;
 
+  editSubscription: Subscription;
+  editMode = false;
+  editedItemIndex: number;
+  editedItem:Ingredient;
+
+  constructor(private shoppingService: ShoppingService) { }
+  
   ngOnInit() {
-    
+    this.editSubscription = this.shoppingService.startedEditing.subscribe((index:number)=>{
+      this.editMode = true;
+      this.editedItemIndex = index;
+      this.editedItem = this.shoppingService.getIngredient(this.editedItemIndex);
+      this.slForm.setValue({
+        name: this.editedItem.name,
+        amount: this.editedItem.amount
+      })
+    });
   }
 
   onAddItem(form: NgForm){
+    
     const value = form.value;
-    const ingredient = new Ingredient(value.name, value.amount);
-    this.shoppingService.addIngredient(ingredient);
+    if(this.editMode){
+      this.editedItem = value;
+      this.shoppingService.editIngredient(this.editedItemIndex, this.editedItem)
+    } else{
+      const ingredient = new Ingredient(value.name, value.amount);
+      this.shoppingService.addIngredient(ingredient);
+    }
+    this.onClear();
   }
 
-  onClear(form: NgForm){
-    form.reset();
+  onClear(){
+    this.editMode = false;
+    this.slForm.reset();
   }
 
   onDelete(){
     this.shoppingService.deleteAll();
   }
+
+  ngOnDestroy(): void {
+    this.editSubscription.unsubscribe();
+  }
 } 
 
-function ViewChild(arg0: string, arg1: { static: boolean; }) {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable} from 'rxjs';
+import { BehaviorSubject, Observable, Subject} from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 
 @Injectable({providedIn:'root'})
@@ -9,6 +9,8 @@ export class ShoppingService {
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
   ];
+
+  startedEditing = new Subject<number>();
 
   private loadIngredients = new BehaviorSubject<Ingredient[]>(this.ingredients);
 
@@ -34,4 +36,15 @@ export class ShoppingService {
     this.ingredients = [];
     this.loadIngredients.next(this.ingredients);
   }
+
+  getIngredient(index:number){
+    return this.ingredients[index];
+  }
+
+  editIngredient(index: number, ingredient:Ingredient){
+    this.ingredients[index].name = ingredient.name;
+    this.ingredients[index].amount = ingredient.amount;
+    this.loadIngredients.next(this.ingredients);
+  }
+
 }
