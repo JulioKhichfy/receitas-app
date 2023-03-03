@@ -47,4 +47,9 @@ export class ShoppingService {
     this.loadIngredients.next(this.ingredients);
   }
 
+  delete(index:number){
+    this.ingredients.splice(index, 1);
+    this.loadIngredients.next(this.ingredients);
+  }
+
 }

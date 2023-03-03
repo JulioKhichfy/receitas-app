@@ -30,12 +30,25 @@
         </div>
           <div class="row">
             <div class="col-xs-12">
-              <button 
+              <button style="margin: 10px;"
                 class="btn btn-success"
                 type="submit"
                 [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
-              <button class="btn btn-danger" (click)="onDelete()" type="button">Delete</button>
-              <button class="btn btn-primary" (click)="onClear()"type="button">Clear</button>
+              <button 
+                style="margin: 10px;"
+                class="btn btn-danger" 
+                (click)="onDelete()" 
+                type="button"
+                [disabled]="!editMode">
+                Delete
+              </button>
+              <button
+                style="margin: 10px;" 
+                class="btn btn-primary" 
+                (click)="onClear()"
+                type="button">
+                Clear
+              </button>
             </div>
           </div>
       </form>
