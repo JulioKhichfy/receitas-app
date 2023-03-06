@@ -9,7 +9,7 @@ export class RecipeService{
 
   //recipeSelected = new EventEmitter<Recipe>();
   recipes=[
-    new Recipe(0,
+    new Recipe(
       'A Test Recipe 1', 
       'This is simply a test 1', 
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -18,7 +18,7 @@ export class RecipeService{
         new Ingredient('French Fries', 20),
       ]),
     
-      new Recipe(1,
+      new Recipe(
         'A Test Recipe 2', 
         'This is simply a test 2', 
         'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -43,9 +43,8 @@ export class RecipeService{
     );
   }
 
-  getRecipe(id:number):Recipe{
-    
-    const recipe = this.recipes.find(recipe => recipe.id == id);
+  getRecipe(index:number):Recipe{
+    const recipe = this.recipes[index]
     return recipe;
   }
 
@@ -55,15 +54,17 @@ export class RecipeService{
   }
 
   addRecipe(recipe: Recipe) {
-    recipe.id = this.recipes.length;
-   
     this.recipes.push(recipe);
     this.recipesChanged.next(this.recipes);
   }
 
   updateRecipe(index: number, newRecipe: Recipe) {
-    newRecipe.id = index;
     this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes);
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes);
   }
 }
